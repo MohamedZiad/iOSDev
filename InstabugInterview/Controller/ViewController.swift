@@ -18,16 +18,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        totalRequests(numberOfTimes: 250) {
-            print("Finished calling\(self.numberOfRequests)")
-        }
+ 
     }
     
     private func loadJsonData(file: String) -> Data? {
-        //1
         if let jsonFilePath = Bundle(for: type(of:  self)).path(forResource: file, ofType: "json") {
             let jsonFileURL = URL(fileURLWithPath: jsonFilePath)
-            //2
             if let jsonData = try? Data(contentsOf: jsonFileURL) {
                 return jsonData
             }
@@ -36,7 +32,7 @@ class ViewController: UIViewController {
     }
     
     func save(statusCode: Int, requestpayloadBody: String, method: ApiMethods, url: URL, responsePayLoad: String, payloadRequestSize: Int, payloadResponseSize: Int  ,completion:(() -> ())?) {
-        
+
         let savedRecord = Record(context: self.context)
         let savedRequest = Request(context: self.context)
         let savedResponse = Response(context: self.context)
@@ -82,9 +78,6 @@ class ViewController: UIViewController {
                 try self.context.save()
                 self.records.append(savedRecord)
                 self.itemRecords.append(savedRecord)
-
-                
-               
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
             }
@@ -95,6 +88,7 @@ class ViewController: UIViewController {
     func callPostApi(completion:(() -> ())?) {
         if let postURL = ApiName.binHttpPost.rawValue.url {
             NetworkClient.shared.post(postURL) { [weak self]recievedData, response,errorResponse  in
+                self?.numberOfRequests += 1
                 if let urlResponse = response {
                     self?.handleResponse(dataResponse: recievedData, urlResponse: urlResponse, requestPayLoad: nil,method: .post, url: postURL, completion: {
                         completion?()
@@ -111,6 +105,7 @@ class ViewController: UIViewController {
             let authApi = getAuthApi.appendingPathComponent(body)
             _ = "range:\(body)"
             NetworkClient.shared.get(authApi) { [weak self]recievedData, response,errorResponse  in
+                self?.numberOfRequests += 1
                 if let urlResponse = response {
                     self?.handleResponse(dataResponse: recievedData, urlResponse: urlResponse, requestPayLoad: nil,method: .get, url: getAuthApi, completion: {
                         completion?()
@@ -126,6 +121,8 @@ class ViewController: UIViewController {
             let authApi = getAuthApi.appendingPathComponent(body)
             _ = "range:\(body)"
             NetworkClient.shared.get(authApi) { [weak self] recievedData, response,errorResponse  in
+                self?.numberOfRequests += 1
+
                 if let urlResponse = response {
                     self?.handleResponse(dataResponse: recievedData, urlResponse: urlResponse, requestPayLoad: nil,method: .get, url: getAuthApi, completion: {
                         completion?()
@@ -138,8 +135,8 @@ class ViewController: UIViewController {
     func callPutApi(completion:(() -> ())?) {
         if let putApi = ApiName.binHttpPut.rawValue.url {
             NetworkClient.shared.put(putApi) { [weak self]recievedData, response,errorResponse  in
+                self?.numberOfRequests += 1
                 if let urlResponse = response {
-                    
                     self?.handleResponse(dataResponse: recievedData, urlResponse: urlResponse, requestPayLoad: nil,method: .put, url: putApi, completion: {
                         completion?()
                     })
@@ -151,7 +148,8 @@ class ViewController: UIViewController {
     func callDeleteApi(completion:(() -> ())?) {
         if let deleteApi = ApiName.binHttpDelete.rawValue.url {
             NetworkClient.shared.delete(deleteApi) { [weak self]recievedData, response,errorResponse  in
-                if let urlResponse = response {
+                self?.numberOfRequests += 1
+                   if let urlResponse = response {
                     self?.handleResponse(dataResponse: recievedData, urlResponse: urlResponse , requestPayLoad: nil,method: .get, url: deleteApi, completion: nil)
                 }
             }
@@ -160,8 +158,7 @@ class ViewController: UIViewController {
     
     func totalRequests(numberOfTimes: Int, completion:(() -> ())?) {
      
-            while true {
-            self.numberOfRequests += 1
+            while numberOfTimes > numberOfRequests {
             self.callPutApi(completion: {
                 self.callPostApi(completion: {
                     self.callGetApi(completion: {
@@ -171,12 +168,7 @@ class ViewController: UIViewController {
                     })
                 })
             })
-            if numberOfRequests == 1000 {
-                completion?()
-                break
-            }
         }
-        
     }
     
     func isValidRequestPayload(requestPayloadSize: Int) -> Bool {
@@ -191,48 +183,52 @@ class ViewController: UIViewController {
         
     @discardableResult
     func fetchSavedRecords() -> [Record] {
-        do {
-            let savedrequests =   try  context.fetch(Record.fetchRequest())
-            self.records = savedrequests
-            print("RecordsCount\(self.records.count)")
-            return savedrequests
-        } catch {
-            print(error.localizedDescription)
-        }
+            do {
+                let savedrequests =   try  self.context.fetch(Record.fetchRequest())
+                self.records = savedrequests
+                print("RecordsCount\(self.records.count)")
+                return savedrequests
+            } catch {
+                print(error.localizedDescription)
+            }
+        
         return []
     }
-    
-    
-    func deleteAllData(_ entity:String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        fetchRequest.returnsObjectsAsFaults = false
-        do {
-            let results = try context.fetch(fetchRequest)
-            for object in results {
-                guard let objectData = object as? NSManagedObject else {continue}
-                context.delete(objectData)
+
+    func deleteAllData(_ entity:String,  completion:(() -> ())?) {
+        
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+            fetchRequest.returnsObjectsAsFaults = false
+            do {
+                let results = try self.context.fetch(fetchRequest)
+                for object in results {
+                    guard let objectData = object as? NSManagedObject else {continue}
+                    self.context.delete(objectData)
+                }
+            } catch let error {
+                print("Detele all data in \(entity) error :", error)
             }
-        } catch let error {
-            print("Detele all data in \(entity) error :", error)
-        }
+        
+         completion?()
     }
     
     func validateOnSavedData(completion:(() -> ())?) {
         
-        if fetchSavedRecords().count >= 1001 {
-            do {
-                let records = try  context.fetch(Record.fetchRequest())
-                context.delete(records[0])
+        if fetchSavedRecords().count > 1000 {
                 do {
-                    try context.save()
+                    let records = try  self.context.fetch(Record.fetchRequest())
+                    self.context.delete(records[0])
+                    do {
+                        try self.context.save()
+                        
+                    } catch let error as NSError {
+                        print("Could not remove first record. \(error), \(error.userInfo)")
+                    }
                     
-                } catch let error as NSError {
-                    print("Could not remove first record. \(error), \(error.userInfo)")
+                } catch let error {
+                    print(error.localizedDescription)
                 }
                 
-            } catch let error {
-                print(error.localizedDescription)
-            }
         }
             completion?()
     }
@@ -252,12 +248,40 @@ class ViewController: UIViewController {
             self.save(statusCode: response.statusCode, requestpayloadBody: requestPayLoad ?? "", method: method, url: url, responsePayLoad: jsonString,payloadRequestSize: 0, payloadResponseSize: data.count  ,completion: {
                 completion?()
             })
-            
         } else {
             self.save(statusCode: response.statusCode, requestpayloadBody: requestPayLoad ?? "", method: method, url: url, responsePayLoad: "",payloadRequestSize: 0, payloadResponseSize: 0  ,completion: {
                 completion?()
             })
         }
+    }
+
+    func setLimitForContainer(numberOfRecords: Int, completion:(() -> ())?) {
+        for _ in 0...numberOfRecords {
+            let savedRecord = Record(context: self.context)
+            let savedRequest = Request(context: self.context)
+            let savedResponse = Response(context: self.context)
+            savedRequest.httpMethod = "Post"
+            savedRequest.body = "Test"
+            savedRequest.url = URL(string: "https://httpbin.org/post")
+            savedResponse.payloadBody  = "Test Response"
+            savedResponse.statusCode = 200
+            savedRecord.addToSavedRequest(savedRequest)
+            savedRecord.addToSavedResponse(savedResponse)
+            
+            self.validateOnSavedData {
+                self.context.perform {
+                    do {
+                        try self.context.save()
+                        self.records.append(savedRecord)
+                        self.itemRecords.append(savedRecord)
+                    } catch let error as NSError {
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                }
+            }
+            
+        }
+        completion?()
     }
 }
 

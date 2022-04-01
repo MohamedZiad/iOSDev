@@ -3,4 +3,86 @@
    uuid = "A574293A-862A-49F3-93CA-E34EECE2EA3A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5D74DEC-4FE8-4CBB-A696-0957F77AF4C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstabugNetworkClientTests/InstabugNetworkClientTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "testSaveRecrodWithLargePayloadSize()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E5D74DEC-4FE8-4CBB-A696-0957F77AF4C3 - 6bd2f9a19161bff2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in InstabugNetworkClientTests.InstabugNetworkClientTests.testSaveRecrodWithLargePayloadSize() -&gt; ()"
+                  moduleName = "InstabugNetworkClientTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro16/Desktop/InstabugInterview-2022/InstabugNetworkClientTests/InstabugNetworkClientTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "339"
+                  endingLineNumber = "339"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "E5D74DEC-4FE8-4CBB-A696-0957F77AF4C3 - 6bd2f9a19161bff2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in InstabugNetworkClientTests.InstabugNetworkClientTests.testSaveRecrodWithLargePayloadSize() -&gt; ()"
+                  moduleName = "InstabugNetworkClientTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro16/Desktop/InstabugInterview-2022/InstabugNetworkClientTests/InstabugNetworkClientTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "339"
+                  endingLineNumber = "339"
+                  offsetFromSymbolStart = "1228">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "381C9EAC-85B6-49CD-95D6-00E67B2CDF4C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstabugNetworkClientTests/InstabugNetworkClientTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "testRemovingAllData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A22AE01-A37B-48EF-B427-5FDBB43E6461"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstabugNetworkClientTests/InstabugNetworkClientTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "testRemovingAllData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -47,10 +47,7 @@ public class NetworkClient {
         session.dataTaskWithURL(urlRequest) { data, response, error in
             if let error = error {
                       print("Request error: ", error)
-//                      return
                   }
-            
-            
             guard let response = response as? HTTPURLResponse else { return }
 
             if response.statusCode == 200 {

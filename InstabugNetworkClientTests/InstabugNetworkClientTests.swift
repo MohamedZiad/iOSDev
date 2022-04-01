@@ -17,9 +17,6 @@ class InstabugNetworkClientTests: XCTestCase {
     var viewController: ViewController!
 //    var mockStorageManager: MockContainerManager!
     
-    
-    
-    
     override func setUp() {
         super.setUp()
         netWorkClient = NetworkClient(session: session)
@@ -54,37 +51,26 @@ class InstabugNetworkClientTests: XCTestCase {
         do {
             let dataTask = MockURLSessionDataTask()
             session.nextDataTask = dataTask
-            
             let url = URL(string: "https://httpbin.org/range/")!
             netWorkClient.get(url) { _, _, _ in
-                
             }
-            
             XCTAssert(dataTask.resumeWasCalled)
         }
-        
         do {
             let dataTask = MockURLSessionDataTask()
             session.nextDataTask = dataTask
-            
-            
             let url = URL(string: "https://httpbin.org/delete")!
             netWorkClient.delete(url) { _, _, _ in
-                
             }
-            
             XCTAssert(dataTask.resumeWasCalled)
         }
-        
         do {
             let dataTask = MockURLSessionDataTask()
             session.nextDataTask = dataTask
             
             let url = URL(string: "https://httpbin.org/post")!
             netWorkClient.post(url) { _, _, _ in
-                
             }
-            
             XCTAssert(dataTask.resumeWasCalled)
         }
         
@@ -94,16 +80,16 @@ class InstabugNetworkClientTests: XCTestCase {
             
             let url = URL(string: "https://httpbin.org/put")!
             netWorkClient.put(url) { _, _, _ in
-                
             }
-            
             XCTAssert(dataTask.resumeWasCalled)
         }
     }
     
     //    Test saving Records with Errors
     func testSavingErrorRecords() {
-        viewController.deleteAllData("Record")
+        //        Deleting all Records from Core data
+
+        viewController.deleteAllData("Record", completion: nil)
         do {
             let dataTask = MockURLSessionDataTask()
             session.nextDataTask = dataTask
@@ -122,6 +108,7 @@ class InstabugNetworkClientTests: XCTestCase {
                 
             }
             waitForExpectations(timeout: 5)
+            XCTAssertEqual(viewController.fetchSavedRecords().count, 1, "item saved successfully")
             XCTAssertEqual(viewController.fetchSavedRecords().count, 1, "item saved successfully")
         }
         
@@ -153,8 +140,6 @@ class InstabugNetworkClientTests: XCTestCase {
             session.nextDataTask = dataTask
             session.nextError = HTTPError(rawValue: 403)
             
-            
-            
             let url = URL(string: "https://httpbin.org/post")!
             let response = HTTPURLResponse(url: url, statusCode: 403, httpVersion: nil, headerFields: nil)!
             session.nextURLResponse = response
@@ -172,18 +157,13 @@ class InstabugNetworkClientTests: XCTestCase {
             waitForExpectations(timeout: 5)
             XCTAssertEqual(viewController.fetchSavedRecords().count, 3, "item saved successfully")
         }
-        
         do {
             let dataTask = MockURLSessionDataTask()
             session.nextDataTask = dataTask
             session.nextError = HTTPError(rawValue: 404)
-            
-            
-            
             let url = URL(string: "https://httpbin.org/delete")!
             let response = HTTPURLResponse(url: url, statusCode: 404, httpVersion: nil, headerFields: nil)!
             session.nextURLResponse = response
-            
             let exp = expectation(description: "Saving Record")
             netWorkClient.post(url) { data, urlResponse, err in
                 if let urlResponse = urlResponse {
@@ -192,16 +172,15 @@ class InstabugNetworkClientTests: XCTestCase {
                         
                     })
                 }
-                
             }
             waitForExpectations(timeout: 5)
             XCTAssertEqual(viewController.fetchSavedRecords().count, 4, "item saved successfully")
         }
-        
     }
     
     func testSavingPutRecordData() {
-        viewController.deleteAllData("Record")
+        //        Deleting all Records from Core data
+        viewController.deleteAllData("Record", completion: nil)
 
         let dataTask = MockURLSessionDataTask()
         session.nextDataTask = dataTask
@@ -224,14 +203,12 @@ class InstabugNetworkClientTests: XCTestCase {
             
         }
         waitForExpectations(timeout: 5)
-        
         XCTAssertEqual(viewController.fetchSavedRecords().count, 1, "item saved successfully")
-        
     }
     
     
     func testSavingPostRecordData() {
-        viewController.deleteAllData("Record")
+        viewController.deleteAllData("Record", completion: nil)
         let dataTask = MockURLSessionDataTask()
         session.nextDataTask = dataTask
         session.nextData =  loadJsonData(file: "PostValidResponse")
@@ -246,14 +223,15 @@ class InstabugNetworkClientTests: XCTestCase {
                     
                 })
             }
-            
         }
         waitForExpectations(timeout: 5)
         XCTAssertEqual(viewController.fetchSavedRecords().count, 1, "item saved successfully")
     }
     
     func testSavingGetRecordData() {
-        viewController.deleteAllData("Record")
+//        Deleting all Records from Core data
+        viewController.deleteAllData("Record", completion: nil)
+        
         let dataTask = MockURLSessionDataTask()
         session.nextDataTask = dataTask
         session.nextData =  loadJsonData(file: "GetValidResponse")
@@ -269,21 +247,19 @@ class InstabugNetworkClientTests: XCTestCase {
                     
                 })
             }
-            
         }
         waitForExpectations(timeout: 10)
-        XCTAssertNotEqual(viewController.fetchSavedRecords().count, 0,  "Couldnt save more than 1000")
+        XCTAssertNotEqual(viewController.fetchSavedRecords().count, 0)
     }
     
     
     func testSavingDeleteRecordData() {
-        viewController.deleteAllData("Record")
+//        Deleting all Records from Core data
+        viewController.deleteAllData("Record", completion: nil)
 
         let dataTask = MockURLSessionDataTask()
         session.nextDataTask = dataTask
         session.nextData =  loadJsonData(file: "DeleteValidResponse")
-        
-        
         
         let url = URL(string: "https://httpbin.org/delete")!
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
@@ -300,17 +276,18 @@ class InstabugNetworkClientTests: XCTestCase {
             
         }
         waitForExpectations(timeout: 10)
-        XCTAssertNotEqual(viewController.fetchSavedRecords().count, 0,  "Couldnt save more than 1000")
+        XCTAssertNotEqual(viewController.fetchSavedRecords().count, 0)
     }
     
 //    Limitition of core data
     func testLimitionOfCoreData() {
-        viewController.deleteAllData("Record")
+//        Deleting all Records from Core data
+        viewController.deleteAllData("Record", completion: nil)
         do {
             let exp = expectation(description: "Maximum Limit 1000")
-            viewController.totalRequests(numberOfTimes: 250, completion: {
+            viewController.setLimitForContainer(numberOfRecords: 1200, completion: {
                 exp.fulfill()
-                
+
             })
             waitForExpectations(timeout: 10)
             XCTAssertEqual(viewController.fetchSavedRecords().count, 1000, "item saved successfully")
@@ -319,19 +296,18 @@ class InstabugNetworkClientTests: XCTestCase {
         
         do {
             let exp = expectation(description: "Maximum Limit 1000 not 1001")
-            viewController.totalRequests(numberOfTimes: 1010, completion: {
+            viewController.setLimitForContainer(numberOfRecords: 1200, completion: {
                 exp.fulfill()
-                
             })
             waitForExpectations(timeout: 10)
-  
             XCTAssertNotEqual(viewController.fetchSavedRecords().count, 1001,  "Couldnt save more than 1000")
         }
     }
     
     func testSaveRecrodWithValidPayloadSize() {
+//        Deleting all Records from Core data
+        viewController.deleteAllData("Record", completion: nil)
         var savedItemBody = ""
-        viewController.deleteAllData("Record")
         let exp = expectation(description: "Valid payLoadSize")
         let url = URL(string: "https://httpbin.org/put")!
         let body = loadJsonData(file: "PutValidResponse")
@@ -342,17 +318,16 @@ class InstabugNetworkClientTests: XCTestCase {
                 let payloadbody = responseObj?.value(forKey: "body") as! String
                 savedItemBody = payloadbody
             }
-            
             exp.fulfill()
         })
-        
         waitForExpectations(timeout: 10)
         XCTAssertEqual(savedItemBody, (bodyString))
     }
     
     func testSaveRecrodWithLargePayloadSize() {
+//        Deleting all Records from Core data
+        viewController.deleteAllData("Record", completion: nil)
         var savedItemBody = ""
-        viewController.deleteAllData("Record")
         let exp = expectation(description: "(payload too large)")
         let url = URL(string: "https://httpbin.org/put")!
         let body = loadJsonData(file: "PutValidResponse")
@@ -363,13 +338,10 @@ class InstabugNetworkClientTests: XCTestCase {
                 let payloadbody = responseObj?.value(forKey: "payloadBody") as! String
                 savedItemBody = payloadbody
             }
-            
             exp.fulfill()
-
         })
         
         waitForExpectations(timeout: 10)
-
         XCTAssertEqual(savedItemBody, ("(payload too large)"))
     }
     
@@ -382,6 +354,15 @@ class InstabugNetworkClientTests: XCTestCase {
     func testNotValidatePayloadSize() {
         let isValid = viewController.isValidRequestPayload(requestPayloadSize: 2 * 1024 * 1024)
         XCTAssertFalse(isValid, "Size is not valid")
+    }
+    
+    func testRemovingAllData() {
+        let exp =  expectation(description: "All data has been deleted")
+        viewController.deleteAllData("Record", completion: {
+            exp.fulfill()
+        })
+        waitForExpectations(timeout: 3)
+        XCTAssertEqual(viewController.fetchSavedRecords().count, 0)
     }
 }
 

@@ -42,7 +42,6 @@
 		B332DE9C27F5EFF100240290 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4189D27F36410008C4A42 /* ApiMethods.swift */; };
 		B389572627F37EA200E5CCAB /* InstabugInterview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B389572427F37EA200E5CCAB /* InstabugInterview.xcdatamodeld */; };
 		B3A4189727F35AF2008C4A42 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4189627F35AF2008C4A42 /* String.swift */; };
-		B3A4189A27F3633D008C4A42 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4189927F3633D008C4A42 /* ResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +119,6 @@
 		B389572527F37EA200E5CCAB /* InstabugInterview.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InstabugInterview.xcdatamodel; sourceTree = "<group>"; };
 		B3A4189327F359CE008C4A42 /* ApiName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiName.swift; sourceTree = "<group>"; };
 		B3A4189627F35AF2008C4A42 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		B3A4189927F3633D008C4A42 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		B3A4189D27F36410008C4A42 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,7 +232,6 @@
 		B3A4188E27F35520008C4A42 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B3A4189927F3633D008C4A42 /* ResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -439,7 +436,6 @@
 				24AA93A125AF0DA4007588C7 /* SceneDelegate.swift in Sources */,
 				B32189EF27F6FA61006D63EC /* Request+CoreDataClass.swift in Sources */,
 				B307E69B27F44529004A0870 /* Int.swift in Sources */,
-				B3A4189A27F3633D008C4A42 /* ResponseModel.swift in Sources */,
 				B32189ED27F6FA61006D63EC /* Request+CoreDataProperties.swift in Sources */,
 				B30BD09727F661DD00D310DE /* MockContainerManager.swift in Sources */,
 			);
