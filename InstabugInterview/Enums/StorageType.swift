@@ -6,3 +6,6 @@
 //
 
 import Foundation
+enum StorageType {
+  case persistent, inMemory
+}

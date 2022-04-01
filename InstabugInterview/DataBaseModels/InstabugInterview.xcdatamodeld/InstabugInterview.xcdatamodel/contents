@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Record" representedClassName="Record" syncable="YES">
+        <attribute name="request" optional="YES" attributeType="String"/>
+        <attribute name="response" optional="YES" attributeType="String"/>
+        <relationship name="savedRequest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="record" inverseEntity="Request"/>
+        <relationship name="savedResponse" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Response" inverseName="record" inverseEntity="Response"/>
+    </entity>
+    <entity name="Request" representedClassName="Request" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="httpMethod" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Record" inverseName="savedRequest" inverseEntity="Record"/>
+    </entity>
+    <entity name="Response" representedClassName="Response" syncable="YES">
+        <attribute name="errorCode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="errorDomain" optional="YES" attributeType="String"/>
+        <attribute name="payloadBody" optional="YES" attributeType="String"/>
+        <attribute name="statusCode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Record" inverseName="savedResponse" inverseEntity="Record"/>
+    </entity>
+    <elements>
+        <element name="Record" positionX="-689.3757934570312" positionY="-156.3010864257812" width="128" height="103"/>
+        <element name="Request" positionX="-260.9794921875" positionY="14.71432495117188" width="128" height="103"/>
+        <element name="Response" positionX="-131.0453491210938" positionY="-192.2920989990234" width="128" height="104"/>
+    </elements>
 </model>

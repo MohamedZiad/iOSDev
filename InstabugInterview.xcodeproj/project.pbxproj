@@ -19,6 +19,30 @@
 		24AA93CD25AF0F0D007588C7 /* InstabugNetworkClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA93B825AF0F0D007588C7 /* InstabugNetworkClient.framework */; };
 		24AA93CE25AF0F0D007588C7 /* InstabugNetworkClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA93B825AF0F0D007588C7 /* InstabugNetworkClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24AA93D925AF0F24007588C7 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA93D825AF0F24007588C7 /* NetworkClient.swift */; };
+		B301AA4927F66B2D00959B5B /* InstabugInterview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B389572427F37EA200E5CCAB /* InstabugInterview.xcdatamodeld */; };
+		B301AA4B27F66DD300959B5B /* inMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301AA4A27F66DD300959B5B /* inMemoryStore.swift */; };
+		B307E69B27F44529004A0870 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = B307E69A27F44529004A0870 /* Int.swift */; };
+		B307E6A727F497AF004A0870 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B307E6A627F497AF004A0870 /* HTTPError.swift */; };
+		B307E6AC27F4BB38004A0870 /* PostValidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B307E6AB27F4BB38004A0870 /* PostValidResponse.json */; };
+		B307E6AE27F4BBA6004A0870 /* GetValidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B307E6AD27F4BBA6004A0870 /* GetValidResponse.json */; };
+		B307E6B027F4BBD0004A0870 /* PutValidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B307E6AF27F4BBD0004A0870 /* PutValidResponse.json */; };
+		B307E6B227F4BBE1004A0870 /* DeleteValidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B307E6B127F4BBE1004A0870 /* DeleteValidResponse.json */; };
+		B30BD09727F661DD00D310DE /* MockContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BD09327F64E6900D310DE /* MockContainerManager.swift */; };
+		B310106127F74A8000B2D69B /* InstaBugCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310106027F74A8000B2D69B /* InstaBugCoreDataTests.swift */; };
+		B32189DE27F6F904006D63EC /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32189DD27F6F904006D63EC /* MockURLSession.swift */; };
+		B32189EB27F6FA61006D63EC /* Response+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32189E327F6FA5A006D63EC /* Response+CoreDataClass.swift */; };
+		B32189EC27F6FA61006D63EC /* Response+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32189E427F6FA5A006D63EC /* Response+CoreDataProperties.swift */; };
+		B32189ED27F6FA61006D63EC /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32189E227F6FA5A006D63EC /* Request+CoreDataProperties.swift */; };
+		B32189EE27F6FA61006D63EC /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32189E027F6FA5A006D63EC /* Record+CoreDataProperties.swift */; };
+		B32189EF27F6FA61006D63EC /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32189E127F6FA5A006D63EC /* Request+CoreDataClass.swift */; };
+		B32189F027F6FA61006D63EC /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32189DF27F6FA5A006D63EC /* Record+CoreDataClass.swift */; };
+		B332DE8F27F58E7000240290 /* MockProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B332DE8E27F58E7000240290 /* MockProtocols.swift */; };
+		B332DE9527F5E5A200240290 /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B332DE9427F5E5A200240290 /* StorageType.swift */; };
+		B332DE9B27F5EFEF00240290 /* ApiName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4189327F359CE008C4A42 /* ApiName.swift */; };
+		B332DE9C27F5EFF100240290 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4189D27F36410008C4A42 /* ApiMethods.swift */; };
+		B389572627F37EA200E5CCAB /* InstabugInterview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B389572427F37EA200E5CCAB /* InstabugInterview.xcdatamodeld */; };
+		B3A4189727F35AF2008C4A42 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4189627F35AF2008C4A42 /* String.swift */; };
+		B3A4189A27F3633D008C4A42 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4189927F3633D008C4A42 /* ResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +99,29 @@
 		24AA93C725AF0F0D007588C7 /* InstabugNetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstabugNetworkClientTests.swift; sourceTree = "<group>"; };
 		24AA93C925AF0F0D007588C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24AA93D825AF0F24007588C7 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		B301AA4A27F66DD300959B5B /* inMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inMemoryStore.swift; sourceTree = "<group>"; };
+		B307E69A27F44529004A0870 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		B307E6A627F497AF004A0870 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		B307E6AB27F4BB38004A0870 /* PostValidResponse.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = PostValidResponse.json; sourceTree = "<group>"; };
+		B307E6AD27F4BBA6004A0870 /* GetValidResponse.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = GetValidResponse.json; sourceTree = "<group>"; };
+		B307E6AF27F4BBD0004A0870 /* PutValidResponse.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = PutValidResponse.json; sourceTree = "<group>"; };
+		B307E6B127F4BBE1004A0870 /* DeleteValidResponse.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = DeleteValidResponse.json; sourceTree = "<group>"; };
+		B30BD09327F64E6900D310DE /* MockContainerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainerManager.swift; sourceTree = "<group>"; };
+		B310106027F74A8000B2D69B /* InstaBugCoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaBugCoreDataTests.swift; sourceTree = "<group>"; };
+		B32189DD27F6F904006D63EC /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		B32189DF27F6FA5A006D63EC /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B32189E027F6FA5A006D63EC /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B32189E127F6FA5A006D63EC /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B32189E227F6FA5A006D63EC /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B32189E327F6FA5A006D63EC /* Response+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B32189E427F6FA5A006D63EC /* Response+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B332DE8E27F58E7000240290 /* MockProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocols.swift; sourceTree = "<group>"; };
+		B332DE9427F5E5A200240290 /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
+		B389572527F37EA200E5CCAB /* InstabugInterview.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InstabugInterview.xcdatamodel; sourceTree = "<group>"; };
+		B3A4189327F359CE008C4A42 /* ApiName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiName.swift; sourceTree = "<group>"; };
+		B3A4189627F35AF2008C4A42 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		B3A4189927F3633D008C4A42 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		B3A4189D27F36410008C4A42 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +176,11 @@
 			children = (
 				24AA939E25AF0DA4007588C7 /* AppDelegate.swift */,
 				24AA93A025AF0DA4007588C7 /* SceneDelegate.swift */,
-				24AA93A225AF0DA4007588C7 /* ViewController.swift */,
+				B3A4189827F36327008C4A42 /* DataBaseModels */,
+				B3A4188E27F35520008C4A42 /* Model */,
+				B307E6A927F4BB04004A0870 /* Controller */,
+				B3A4189527F35AE7008C4A42 /* Extensions */,
+				B3A4189227F359B6008C4A42 /* Enums */,
 				24AA93A425AF0DA4007588C7 /* Main.storyboard */,
 				24AA93A725AF0DA5007588C7 /* Assets.xcassets */,
 				24AA93A925AF0DA5007588C7 /* LaunchScreen.storyboard */,
@@ -144,6 +195,8 @@
 				24AA93BA25AF0F0D007588C7 /* InstabugNetworkClient.h */,
 				24AA93BB25AF0F0D007588C7 /* Info.plist */,
 				24AA93D825AF0F24007588C7 /* NetworkClient.swift */,
+				B332DE8E27F58E7000240290 /* MockProtocols.swift */,
+				B32189DD27F6F904006D63EC /* MockURLSession.swift */,
 			);
 			path = InstabugNetworkClient;
 			sourceTree = "<group>";
@@ -151,10 +204,75 @@
 		24AA93C625AF0F0D007588C7 /* InstabugNetworkClientTests */ = {
 			isa = PBXGroup;
 			children = (
+				B307E6AA27F4BB1E004A0870 /* Responses */,
 				24AA93C725AF0F0D007588C7 /* InstabugNetworkClientTests.swift */,
+				B310106027F74A8000B2D69B /* InstaBugCoreDataTests.swift */,
 				24AA93C925AF0F0D007588C7 /* Info.plist */,
 			);
 			path = InstabugNetworkClientTests;
+			sourceTree = "<group>";
+		};
+		B307E6A927F4BB04004A0870 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				24AA93A225AF0DA4007588C7 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B307E6AA27F4BB1E004A0870 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				B307E6AB27F4BB38004A0870 /* PostValidResponse.json */,
+				B307E6AD27F4BBA6004A0870 /* GetValidResponse.json */,
+				B307E6AF27F4BBD0004A0870 /* PutValidResponse.json */,
+				B307E6B127F4BBE1004A0870 /* DeleteValidResponse.json */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		B3A4188E27F35520008C4A42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B3A4189927F3633D008C4A42 /* ResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B3A4189227F359B6008C4A42 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				B3A4189327F359CE008C4A42 /* ApiName.swift */,
+				B307E6A627F497AF004A0870 /* HTTPError.swift */,
+				B3A4189D27F36410008C4A42 /* ApiMethods.swift */,
+				B332DE9427F5E5A200240290 /* StorageType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		B3A4189527F35AE7008C4A42 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B3A4189627F35AF2008C4A42 /* String.swift */,
+				B307E69A27F44529004A0870 /* Int.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B3A4189827F36327008C4A42 /* DataBaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				B389572427F37EA200E5CCAB /* InstabugInterview.xcdatamodeld */,
+				B32189DF27F6FA5A006D63EC /* Record+CoreDataClass.swift */,
+				B32189E027F6FA5A006D63EC /* Record+CoreDataProperties.swift */,
+				B32189E127F6FA5A006D63EC /* Request+CoreDataClass.swift */,
+				B32189E227F6FA5A006D63EC /* Request+CoreDataProperties.swift */,
+				B32189E327F6FA5A006D63EC /* Response+CoreDataClass.swift */,
+				B32189E427F6FA5A006D63EC /* Response+CoreDataProperties.swift */,
+				B30BD09327F64E6900D310DE /* MockContainerManager.swift */,
+				B301AA4A27F66DD300959B5B /* inMemoryStore.swift */,
+			);
+			path = DataBaseModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +409,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B307E6B027F4BBD0004A0870 /* PutValidResponse.json in Resources */,
+				B307E6B227F4BBE1004A0870 /* DeleteValidResponse.json in Resources */,
+				B307E6AC27F4BB38004A0870 /* PostValidResponse.json in Resources */,
+				B307E6AE27F4BBA6004A0870 /* GetValidResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,9 +423,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32189EC27F6FA61006D63EC /* Response+CoreDataProperties.swift in Sources */,
+				B389572627F37EA200E5CCAB /* InstabugInterview.xcdatamodeld in Sources */,
+				B301AA4B27F66DD300959B5B /* inMemoryStore.swift in Sources */,
+				B332DE9B27F5EFEF00240290 /* ApiName.swift in Sources */,
+				B307E6A727F497AF004A0870 /* HTTPError.swift in Sources */,
+				B3A4189727F35AF2008C4A42 /* String.swift in Sources */,
 				24AA93A325AF0DA4007588C7 /* ViewController.swift in Sources */,
+				B32189EB27F6FA61006D63EC /* Response+CoreDataClass.swift in Sources */,
+				B32189F027F6FA61006D63EC /* Record+CoreDataClass.swift in Sources */,
+				B32189EE27F6FA61006D63EC /* Record+CoreDataProperties.swift in Sources */,
+				B332DE9C27F5EFF100240290 /* ApiMethods.swift in Sources */,
+				B332DE9527F5E5A200240290 /* StorageType.swift in Sources */,
 				24AA939F25AF0DA4007588C7 /* AppDelegate.swift in Sources */,
 				24AA93A125AF0DA4007588C7 /* SceneDelegate.swift in Sources */,
+				B32189EF27F6FA61006D63EC /* Request+CoreDataClass.swift in Sources */,
+				B307E69B27F44529004A0870 /* Int.swift in Sources */,
+				B3A4189A27F3633D008C4A42 /* ResponseModel.swift in Sources */,
+				B32189ED27F6FA61006D63EC /* Request+CoreDataProperties.swift in Sources */,
+				B30BD09727F661DD00D310DE /* MockContainerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +449,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32189DE27F6F904006D63EC /* MockURLSession.swift in Sources */,
 				24AA93D925AF0F24007588C7 /* NetworkClient.swift in Sources */,
+				B332DE8F27F58E7000240290 /* MockProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +459,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B301AA4927F66B2D00959B5B /* InstabugInterview.xcdatamodeld in Sources */,
 				24AA93C825AF0F0D007588C7 /* InstabugNetworkClientTests.swift in Sources */,
+				B310106127F74A8000B2D69B /* InstaBugCoreDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,12 +628,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48H8P9TRYX;
 				INFOPLIST_FILE = InstabugInterview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Instabug.InstabugInterview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Instabug.InstabugInterview1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -505,12 +648,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48H8P9TRYX;
 				INFOPLIST_FILE = InstabugInterview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Instabug.InstabugInterview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Instabug.InstabugInterview1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -576,7 +720,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48H8P9TRYX;
 				INFOPLIST_FILE = InstabugNetworkClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -595,7 +741,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48H8P9TRYX;
 				INFOPLIST_FILE = InstabugNetworkClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -650,6 +798,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B389572427F37EA200E5CCAB /* InstabugInterview.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B389572527F37EA200E5CCAB /* InstabugInterview.xcdatamodel */,
+			);
+			currentVersion = B389572527F37EA200E5CCAB /* InstabugInterview.xcdatamodel */;
+			path = InstabugInterview.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 24AA939325AF0DA4007588C7 /* Project object */;
 }

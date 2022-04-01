@@ -21,7 +21,7 @@
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36",
     "X-Amzn-Trace-Id": "Root=1-6244843a-2363b2a80f067cc04ef837f8"
   },
-  "json": null,
+  "json": "",
   "origin": "45.241.112.179",
   "url": "https://httpbin.org/put"
 }

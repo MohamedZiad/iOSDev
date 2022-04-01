@@ -56,12 +56,53 @@ class MockContainerManager {
     
     
     
-    func insertRecordItem( Request: Request, Response: Response ) -> Record? {
-        guard let recordItem = NSEntityDescription.insertNewObject(forEntityName: "Record", into: backgroundContext) as? Record else { return nil }
-        recordItem.addToSavedRequest(Request)
-        recordItem.addToSavedResponse(Response)
+    func insertRecordItem( requestURL: String,requestMethod: String ) -> Record? {
+       
+        let recordObj =  NSEntityDescription.entity(forEntityName: "Record", in: persistentContainer .viewContext)
+        let requestObj =  NSEntityDescription.entity(forEntityName: "Request", in: persistentContainer.viewContext)
+        
+        
+        
+        let requestUrlAttr = NSAttributeDescription()
+        requestUrlAttr.name = "url"
+        requestUrlAttr.attributeType = .stringAttributeType
+        
+        let requestUrlMethodAttr = NSAttributeDescription()
+        requestUrlAttr.name = "httpMethod"
+        requestUrlAttr.attributeType = .stringAttributeType
+        
+        requestObj?.properties = [requestUrlAttr,requestUrlMethodAttr ]
+        
+        
+       
+        
+        let recordTorequest = NSRelationshipDescription()
+        recordTorequest.name = "savedRequest"
+        recordTorequest.destinationEntity = recordObj
+        recordTorequest.maxCount = 1
+        recordTorequest.deleteRule = .nullifyDeleteRule
+        
+        let requestToRecord = NSRelationshipDescription()
+        requestToRecord.name = "record"
+        requestToRecord.destinationEntity = requestObj
+        requestToRecord.deleteRule = .cascadeDeleteRule
+        
+        requestToRecord.inverseRelationship = recordTorequest
+        
+        
+        let responseObj =  NSEntityDescription.entity(forEntityName: "Response", in: mockPersistantContainer.viewContext)
+        
+//        managedObjectModel.entities = [ recordObj, requestObj, responseObj ]
 
-        return recordItem
+//
+        let newRequest = NSManagedObject(entity: requestObj!, insertInto: mockPersistantContainer.viewContext)
+        
+        newRequest.setValue(NSURL(string: requestURL), forKey: "url")
+        newRequest.setValue(requestMethod, forKey: "httpMethod")
+        let savedRequest = recordObj?.mutableSetValue(forKey: "savedRequest")
+        savedRequest?.add(newRequest)
+
+        return recordObj as? Record
     }
 
     func fetchAll() -> [Record] {
@@ -87,50 +128,5 @@ class MockContainerManager {
     }
     
     
-    func initStubs() {
-            
-        func insertRecordItem( requestURL: String,requestMethod: String ) -> Record? {
-           
-            let recordObj =  NSEntityDescription.entity(forEntityName: "Record", in: mockPersistantContainer.viewContext)
-            let requestObj =  NSEntityDescription.entity(forEntityName: "Request", in: mockPersistantContainer.viewContext)
-            let responseObj =  NSEntityDescription.entity(forEntityName: "Response", in: mockPersistantContainer.viewContext)
-            
-//
-            let newRequest = NSManagedObject(entity: requestObj!, insertInto: mockPersistantContainer.viewContext)
-            newRequest.setValue(requestURL, forKey: "url")
-            newRequest.setValue(requestMethod, forKey: "httpMethod")
-            let savedRequest = recordObj?.mutableSetValue(forKey: "savedRequest")
-            savedRequest?.add(newRequest)
-            
-//           let responseObj =  obj.entity.mutableSetValue(forKey: "savedResponse")
-////            obj.setValue(name, forKey: "name")
-////            obj.setValue(finished, forKey: "finished")
-//
-            return recordObj as? Record
-        }
-        insertRecordItem(requestURL: "https://httpbin.org/post", requestMethod: "post")
-        insertRecordItem(requestURL: "https://httpbin.org/get", requestMethod: "get")
-        insertRecordItem(requestURL: "https://httpbin.org/put", requestMethod: "put")
-        insertRecordItem(requestURL: "https://httpbin.org/delete", requestMethod: "delete")
-
-
-        do {
-            try mockPersistantContainer.viewContext.save()
-        }  catch {
-            print("create fakes error \(error)")
-        }
-            
-    }
-    
-    func flushData() {
-            
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
-        let objs = try! mockPersistantContainer.viewContext.fetch(fetchRequest)
-        for case let obj as NSManagedObject in objs {
-            mockPersistantContainer.viewContext.delete(obj)
-        }
-        try! mockPersistantContainer.viewContext.save()
-
-    }
-    
+   
 }
